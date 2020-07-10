@@ -1,0 +1,13 @@
+"use strict";
+const User = require('./user');
+const Addresses = require('./addresses');
+const Transactions = require('./transactions');
+const Transaction_index = require('./transaction_index');
+const Accounts_messages = require('./accounts_messages');
+const TokenInfo = require('./tokenInfo');
+exports.Addresses = new Addresses();
+exports.Transactions = new Transactions();
+exports.Transaction_index = new Transaction_index();
+exports.Accounts_messages = new Accounts_messages();
+exports.User = new User();
+exports.TokenIfno = new TokenInfo();
