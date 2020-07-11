@@ -27,22 +27,6 @@ const contract = require('../../../util/contract')
 
 let tranList = [];
 
-let addresses =['XK37G6UQIZG26IG2Z7V3RF53PUMO2IZV',
-    '65VPMI7HEWSSCKPFPHGJSUNJGAKPCY7B',
-    'BYLSEJXAURGNJKSYN6WC6NLXSFBSVNZO',
-    '2IO2MCZ2X5WKXL75MJ2CCM22CPEBCR7C',
-    'ZWYTYGLAU3B4TLJ4JOBZWJEBB3A7TP6D',
-    'SEI3IBWFZZJBWMNPZB3RAKQYARH3DY2S',
-    'CGCFKYL2XKZ5RH2A672VQZDUAS6ME2JL',
-    'ZPUXUMBV6MOZ7FCAIX24ZK3YA62SIZZS',
-    'MGQUBT4NROU62NFFXKGWSJFOLXVGDYZG',
-    '64QGQQUGRHM5WWEI5TUBCMJECSQXHUB3',
-    '6SBQUBHLCKHDS3BB3ELHJXAN7PGIV5QH',
-    'YXNQFBKPGXACOT3CI2VRCODIQ2YVD26A',
-    '6KN6O6Y7GQIUR7WWQWIFRZ7ZCPZYSS2H',
-    'NUOX47THDUFUT7Z6XPNN75YJYRJK2LVC',
-    'CMUORK2YLSE4UA6C6DSFVMRPGWKWH3QH',
-    'YW3WEGKSMPJFLCUE4P7B7J5CSWUZTXNW']
 /*用户基本类型*/
 function Transations() {
     this.table = 'transactions_0';
@@ -217,7 +201,7 @@ Transations.prototype.getMessageInfo = async () =>{
             let result = JSON.parse(await webHelper.httpPost(getUrl(localfullnode, '/v1/getmessageInfo'), null, {}));
             //console.log(result)
             if(result.code == 200 && result.data != ''){
-                let lightNode = 0;
+                let lightNode = 2;
                 let contributingSpace = "20TB";
 
                 let obj = JSON.parse(result.data)
@@ -502,8 +486,7 @@ async function insertTran(tran, data) {
     if(!tran.toAddress || ((tran.toAddress).length !=32&&(tran.toAddress).length!=35 )){
         tran.toAddress = "";
     }
-    if(inArray(tran.fromAddress,addresses)) tran.fromAddress = '';
-    if(inArray(tran.toAddress ,addresses)) tran.toAddress = '';
+
 
     let amount = obj.amount ? obj.amount : tran.amount;
     if(!amount) {
